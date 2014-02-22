@@ -176,11 +176,6 @@ function parseData(data)
 	});	
 }
 
-jQuery( document ).ready(function() 
-{	jQuery.get("example.txt",parseData);    
-
-});
-
 function setObserve(element, action, callback)
 {	if(element.indexOf("name=")!=-1)
 	{	var strpos=element.indexOf("name=");
