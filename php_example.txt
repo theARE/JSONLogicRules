@@ -1,0 +1,24 @@
+{"rules":
+	[
+	{"if":
+		[	{"id":"one"},
+			{"with":"questionset-1"},
+			{"#one":[{"value":"!=null","check":"value"}]},
+			{"join":"and"},
+			{"#two":[{"value":"!=''","check":"value"}]},
+			{"action":{"redirect":"questionset-2"}},
+			{"action":{"email":"someone@somewhere.com"}}
+		]
+	},
+	{"if":
+		[	{"id":"two"},
+			{"with":"questionset-1"},
+			{"#three":[{"value":"==null","check":"value"}]},
+			{"join":"and"},
+			{"#four":[{"value":"==''","check":"value"}]},
+			{"action":{"redirect":"questionset-3"}},
+			{"action":{"email":"someone@somewhere.com"}}			
+		]
+	}
+	]
+}

@@ -1,0 +1,52 @@
+{"rules":
+	[
+	{"if":
+		[	{"id":"one-and-two-null"},
+			{"input[name=one];checked":[{"value":"!=null","observe":"change"}]},
+			{"join":"and"},
+			{"#two":[{"value":"!=''","observe":"change"}]},
+			{"action":{"show":"#eight"}},
+			{"action":{"show":"label[for='eight']"}}
+		]
+	}, 
+	{"if":
+		[	{"id":"one-and-two-not-null"},
+			{"input[name=one];checked":[{"value":"==null","observe":"change"}]},
+			{"join":"or"},
+			{"#two":[{"value":"==''","observe":"change"}]},
+			{"action":{"hide":"#eight"}},
+			{"action":{"hide":"label[for='eight']"}},
+			{"action":{"setzero":"#three"}},
+			{"action":{"check":"#three"}}
+		]
+	}, 
+	{"if":
+		[	{"id":"three-four-five-addup"},
+			{"#three":[{"isNumeric":"==true","observe":"change"}]},
+			{"join":"and"},
+			{"#four":[{"isNumeric":"==true","observe":"change"}]},
+			{"join":"and"},
+			{"#five":[{"isNumeric":"==true","observe":"change"}]},
+			{"action":{"addup":"#three+#four+#five","result":"#ten"}}
+		]
+	},
+	{"if":
+		[	{"id":"three-not-zero"},
+			{"#three":[{"value":"==''","observe":"change"}]},
+			{"action":{"setzero":"#three"}}
+		]
+	},
+	{"if":
+		[	{"id":"four-not-zero"},
+			{"#four":[{"value":"==''","observe":"change"}]},
+			{"action":{"setzero":"#four"}}
+		]
+	},
+	{"if":
+		[	{"id":"five-not-zero"},
+			{"#five":[{"value":"==''","observe":"change"}]},
+			{"action":{"setzero":"#five"}}
+		]
+	}
+	]
+}
